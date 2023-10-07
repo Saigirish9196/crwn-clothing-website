@@ -8,13 +8,11 @@ import { selectProducts } from '../../store/categories/catagory.selector'
 
 const ShopItem = () => {
   const {category} = useParams();
-  console.log('re-render/re-direct')
   const products = useSelector(selectProducts)
   const [product,setProduct] = useState({})
   
   
   useEffect(()=>{
-    console.log('effect fired calling set')
     const findProduct =  products.find(product =>product.title.toLowerCase() ===category.toLowerCase())
     setProduct(findProduct)   
   // eslint-disable-next-line react-hooks/exhaustive-deps

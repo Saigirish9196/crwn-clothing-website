@@ -7,7 +7,7 @@ const selectCartReducer = (state) => state.cart;
 //   (cart) => cart.dropDown
 // );
 
-export const selectIsCartOpen = (cart) => cart.dropDown
+export const selectIsCartOpen = (state) => state.cart.dropDown
 
 export const selectCartItems = createSelector(
   [selectCartReducer],
@@ -15,18 +15,9 @@ export const selectCartItems = createSelector(
 );
 
 
-
-// export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
-//   cartItems.reduce(
-//     (total, cartItem) => total + cartItem.quantity * cartItem.price,
-//     0
-//   )
-// );
-
 export const selectCartTotal = createSelector(
   [selectCartReducer],
   (cart) => {
-    console.log(cart.cartItems);
     return cart.cartItems.reduce(
       (total, cartItem) => total + cartItem.quantity * cartItem.price,
       0
